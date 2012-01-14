@@ -46,3 +46,7 @@ pkg
 
 # For rubinius:
 #*.rbc
+
+# Because this is a Gem, not an app
+Gemfile.lock
+
