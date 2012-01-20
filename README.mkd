@@ -4,6 +4,13 @@ ExportPred is a computer program for predicting whether particular Plasmodium fa
 
 http://bioinf.wehi.edu.au/exportpred/
 
+Example usage:
+
+    positive_control = 'MAVSTYNNTRRNGLRYVLKRRTILSVFAVICMLSLNLSIFENNNNNYGFHCNKRHFKSLAEASPEEHNNLRSHSTSDPKKNEEKSLSDEINKCDMKKYTAEEINEMINSSNEFINRNDMNIIFSYVHESEREKFKKVEENIFKFIQSIVETY'
+    result = Bio::ExportPred::Wrapper.new.calculate(positive) #=> Bio::ExportPred::Result object
+    assert_equal true, result.signal?
+    assert result.predicted_rle?
+
 == Contributing to bio-exportpred
  
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
