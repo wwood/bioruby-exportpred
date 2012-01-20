@@ -1,6 +1,7 @@
-= bio-exportpred
+bio-exportpred
+==============
 
-ExportPred is a computer program for predicting whether particular Plasmodium falciparum proteins are exported into the red blood cell cytosol during the intraerythrocytic stages. This biogem is a wrapper around the program, so that it can be interacted with programmatically.
+ExportPred is a computer program for predicting whether particular _Plasmodium falciparum_ proteins are exported into the red blood cell cytosol during the intraerythrocytic stages. This biogem is a wrapper around the program, so that it can be interacted with programmatically.
 
 http://bioinf.wehi.edu.au/exportpred/
 
@@ -8,10 +9,12 @@ Example usage:
 
     positive_control = 'MAVSTYNNTRRNGLRYVLKRRTILSVFAVICMLSLNLSIFENNNNNYGFHCNKRHFKSLAEASPEEHNNLRSHSTSDPKKNEEKSLSDEINKCDMKKYTAEEINEMINSSNEFINRNDMNIIFSYVHESEREKFKKVEENIFKFIQSIVETY'
     result = Bio::ExportPred::Wrapper.new.calculate(positive) #=> Bio::ExportPred::Result object
-    assert_equal true, result.signal?
-    assert result.predicted_rle?
+    result.signal? #=> true
+    result.predicted_rle?  #=> true
+    result.predicted_kld?  #=> false
 
-== Contributing to bio-exportpred
+Contributing to bio-exportpred
+------------------------------
  
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it
@@ -21,7 +24,8 @@ Example usage:
 * Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
 * Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
 
-== Copyright
+Copyright
+---------
 
 Copyright (c) 2012 Ben J Woodcroft. See LICENSE.txt for
 further details.
