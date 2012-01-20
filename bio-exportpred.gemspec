@@ -5,33 +5,35 @@
 
 Gem::Specification.new do |s|
   s.name = "bio-exportpred"
-  s.version = "0.0.0"
+  s.version = "0.0.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Ben J Woodcroft"]
-  s.date = "2012-01-14"
-  s.description = "TODO: longer description of your gem"
+  s.date = "2012-01-20"
+  s.description = "Wrapper around the ExportPred algorithm for predicting P. falciparum exported proteins. Requires local install of the program, which is available from http://bioinf.wehi.edu.au/exportpred/"
   s.email = "donttrustben near gmail.com"
   s.extra_rdoc_files = [
     "LICENSE.txt",
-    "README.rdoc"
+    "README.mkd"
   ]
   s.files = [
     ".document",
     "Gemfile",
     "LICENSE.txt",
-    "README.rdoc",
+    "README.mkd",
     "Rakefile",
     "VERSION",
+    "bio-exportpred.gemspec",
     "lib/bio-exportpred.rb",
+    "lib/bio/appl/exportpred.rb",
     "test/helper.rb",
     "test/test_bio-exportpred.rb"
   ]
   s.homepage = "http://github.com/wwood/bioruby-exportpred"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.14"
-  s.summary = "TODO: one-line summary of your gem"
+  s.rubygems_version = "1.8.11"
+  s.summary = "Wrapper around the ExportPred algorithm for predicting P. falciparum exported proteins"
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
