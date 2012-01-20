@@ -1,10 +1,6 @@
 require 'helper'
 
 class TestBioExportpred < Test::Unit::TestCase
-  def setup
-    @exportpred = Bio::ExportPred::Wrapper.new
-  end
-  
   def test_create_from_line
     # test empty
     line = ''
@@ -21,13 +17,32 @@ class TestBioExportpred < Test::Unit::TestCase
     assert_equal 6.44141, r.score
   end
   
+  def test_create_from_line_options
+    # test empty
+    line = ''
+    r = Bio::ExportPred::Result.create_from_line(line, :no_RLE => true)
+    assert r
+    assert_kind_of Bio::ExportPred::Result, r
+    assert_equal false, r.predicted_kld
+    assert_equal nil, r.predicted_rle
+  end
+  
   def test_wrapper_positive
     positive = 'MAVSTYNNTRRNGLRYVLKRRTILSVFAVICMLSLNLSIFENNNNNYGFHCNKRHFKSLAEASPEEHNNLRSHSTSDPKKNEEKSLSDEINKCDMKKYTAEEINEMINSSNEFINRNDMNIIFSYVHESEREKFKKVEENIFKFIQSIVETY'
-    assert_equal true, @exportpred.calculate(positive).signal?
+    result = Bio::ExportPred::Wrapper.new.calculate(positive)
+    assert_equal true, result.signal?
+    assert result.predicted_rle?
   end
   
   def test_wrapper_negative
     negative = 'MKILLLCIIFLYYVNAFKNTQKDGVSLQILKKKRSNQVNFLNRKNDYNLIKNKNPSSSLKSTFDDIKKIISKQLSVEEDKIQMNSNFTKDLGADSLDLVELIMALEEKFNVTISDQDALKINTVQDAIDYIEKNNKQ'
-    assert_equal false, @exportpred.calculate(negative).signal?
+    assert_equal false, Bio::ExportPred::Wrapper.new.calculate(negative).signal?
+  end
+  
+  def test_no_rle
+    positive = 'MAVSTYNNTRRNGLRYVLKRRTILSVFAVICMLSLNLSIFENNNNNYGFHCNKRHFKSLAEASPEEHNNLRSHSTSDPKKNEEKSLSDEINKCDMKKYTAEEINEMINSSNEFINRNDMNIIFSYVHESEREKFKKVEENIFKFIQSIVETY'
+    result = Bio::ExportPred::Wrapper.new.calculate(positive, :no_RLE => true)
+    assert_equal nil, result.predicted_rle?
+    assert_equal false, result.signal?
   end
 end
