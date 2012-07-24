@@ -3,7 +3,11 @@ bio-exportpred
 
 ExportPred is a computer program for predicting whether particular _Plasmodium falciparum_ proteins are exported into the red blood cell cytosol during the intraerythrocytic stages. This biogem is a wrapper around the program, so that it can be interacted with programmatically.
 
+The original program can be downloaded here:
 http://bioinf.wehi.edu.au/exportpred/
+
+Version 1.0.0 appears to have compilation errors in more recent environments. A patched version that solves these problems is available here:
+https://github.com/wwood/exportpred
 
 Example usage:
 
